@@ -8,7 +8,7 @@ Download the plugin jar from [here](https://github.com/keishispl/knockDC/release
 You can configure KnockDC in the `config.yml` file.
 
 ```yaml
-token:
+token: 'your-token-here'
 
 chat:
   enabled: true
@@ -32,11 +32,20 @@ token: 'your-token-here'
 
 ### chat.enabled
 Set this to `true` to enable sending chat messages to Discord, `false` to disable.
+```yaml
+chat:
+  enabled: true
+```
 
 ### chat.join-leave-messages
 Requires the `chat.enabled` option to be set to `true`.
 
 Set this to `true` to enable sending join/leave messages to Discord, `false` to disable.
+```yaml
+chat:
+  enabled: true
+  join-leave-messages: true
+```
 
 ### chat.channels
 Insert the IDs of the channels you want to send chat messages to as a list, e.g. 
@@ -49,6 +58,11 @@ chat:
 
 ### receive.enabled
 Set this to `true` to enable receiving messages from Discord, `false` to disable.
+```yaml
+receive:
+  enabled: true
+```
+
 
 ### receive.channels
 Insert the IDs of the channels you want to receive messages from as a list, e.g. 
