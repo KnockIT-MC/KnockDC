@@ -4,12 +4,14 @@ import com.google.common.base.Charsets;
 import io.github.keishispl.knockDC.discord.DiscordMessageEvent;
 import io.github.keishispl.knockDC.utils.CheckConfig;
 import io.github.keishispl.knockDC.utils.LangConfig;
+import io.github.keishispl.knockDC.utils.UpdateChecker;
 import io.github.keishispl.knockDC.utils.getVersion;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -38,6 +40,7 @@ public final class KnockDC extends JavaPlugin {
         buildJDA();
 
         Logger.info(LangConfig.get("plugin.enable"));
+        UpdateChecker.updateCheck(Bukkit.getConsoleSender());
         plugin.getJDA().getPresence().setActivity(Activity.watching(plugin.getServer().getOnlinePlayers().size() + " players"));
     }
 
