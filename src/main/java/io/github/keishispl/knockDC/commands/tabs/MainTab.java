@@ -1,6 +1,5 @@
 package io.github.keishispl.knockDC.commands.tabs;
 
-import io.github.keishispl.knockDC.KnockDC;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;

@@ -8,7 +8,6 @@ import io.github.keishispl.knockDC.utils.Message;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class Main implements CommandExecutor {
     public static void init(CommandSender sender, String command, String[] args) {
