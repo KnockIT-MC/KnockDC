@@ -7,6 +7,9 @@
 
 prefix: '&9KnockDC &8●&r'
 
+# Check for plugin updates
+update-check: true
+
 # Your Discord Bot Token here [ DO NOT SHARE WITH ANYONE ] e.g. token: 'your-token-here'
 token:
 

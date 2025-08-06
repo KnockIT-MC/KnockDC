@@ -9,6 +9,7 @@ You can configure KnockDC in the `config.yml` file.
 
 ```yaml
 token: 'your-token-here'
+update-check: true
 
 chat:
   enabled: true
@@ -30,8 +31,14 @@ Insert your Discord bot token as a string, e.g.
 token: 'your-token-here'
 ```
 
+### update-check
+Set this to `true` to enable update notifications sent to operators when they join, `false` to disable. e.g.
+```yaml
+update-check: true
+```
+
 ### chat.enabled
-Set this to `true` to enable sending chat messages to Discord, `false` to disable.
+Set this to `true` to enable sending chat messages to Discord, `false` to disable. e.g.
 ```yaml
 chat:
   enabled: true
@@ -40,7 +47,7 @@ chat:
 ### chat.join-leave-messages
 Requires the `chat.enabled` option to be set to `true`.
 
-Set this to `true` to enable sending join/leave messages to Discord, `false` to disable.
+Set this to `true` to enable sending join/leave messages to Discord, `false` to disable. e.g.
 ```yaml
 chat:
   enabled: true
@@ -57,7 +64,7 @@ chat:
 ```
 
 ### receive.enabled
-Set this to `true` to enable receiving messages from Discord, `false` to disable.
+Set this to `true` to enable receiving messages from Discord, `false` to disable. e.g.
 ```yaml
 receive:
   enabled: true

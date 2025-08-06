@@ -4,6 +4,7 @@ import com.google.common.base.Charsets;
 import io.github.keishispl.knockDC.discord.DiscordMessageEvent;
 import io.github.keishispl.knockDC.utils.CheckConfig;
 import io.github.keishispl.knockDC.utils.LangConfig;
+import io.github.keishispl.knockDC.utils.getVersion;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -21,6 +22,7 @@ import java.util.EnumSet;
 
 public final class KnockDC extends JavaPlugin {
     public static KnockDC plugin;
+    public static String latest_version;
     private JDA jda;
     private FileConfiguration newLangConfig = null;
     private File langConfigFile = null;

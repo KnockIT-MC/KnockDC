@@ -15,6 +15,7 @@ public class MainTab implements TabCompleter {
         List<String> completions = new ArrayList<>();
         if (args.length == 1) {
             if ("reload".startsWith(args[0].toLowerCase())) completions.add("reload");
+            if ("update".startsWith(args[0].toLowerCase())) completions.add("update");
             return completions;
         }
         return null;

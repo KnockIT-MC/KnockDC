@@ -1,13 +1,13 @@
 package io.github.keishispl.knockDC.commands;
 
 import io.github.keishispl.knockDC.KnockDC;
-import io.github.keishispl.knockDC.utils.CheckConfig;
-import io.github.keishispl.knockDC.utils.LangConfig;
-import io.github.keishispl.knockDC.utils.Message;
+import io.github.keishispl.knockDC.utils.*;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+
+import static io.github.keishispl.knockDC.utils.UpdateChecker.updateCheck;
 
 public class Main implements CommandExecutor {
     public static void init(CommandSender sender, String command, String[] args) {
@@ -17,6 +17,14 @@ public class Main implements CommandExecutor {
             KnockDC.getPlugin().getJDA().shutdownNow();
             KnockDC.getPlugin().buildJDA();
             Message.send(sender, LangConfig.get("plugin.reload"));
+        }
+        if (command.equalsIgnoreCase("update")) {
+            String v = getVersion.latest();
+            if (v.equals(KnockDC.getPlugin().getDescription().getVersion())){
+                Message.send(sender, "You are up to date!");
+            } else{
+                updateCheck(sender);
+            }
         }
     }
 
