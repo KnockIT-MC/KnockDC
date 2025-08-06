@@ -1,5 +1,5 @@
 # KnockDC
-KnockDC is a Discord integration plugin for KnockIT.
+KnockDC is a Discord Integration plugin made for the KnockIT server.
 
 ## Features
 * Send chat messages from Discord and back
