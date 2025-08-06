@@ -15,7 +15,6 @@ import java.util.Objects;
 
 import static io.github.keishispl.knockDC.KnockDC.latest_version;
 
-
 @SuppressWarnings("deprecation")
 public class UpdateChecker implements Listener {
 

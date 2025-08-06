@@ -1,5 +1,6 @@
 package io.github.keishispl.knockDC;
 
+import io.github.keishispl.knockDC.commands.Discord;
 import io.github.keishispl.knockDC.commands.Main;
 import io.github.keishispl.knockDC.commands.tabs.MainTab;
 import io.github.keishispl.knockDC.discord.ChatMessageEvent;
@@ -17,6 +18,7 @@ public class Setup {
     public static void commands() {
         plugin.getCommand("knockdc").setExecutor(new Main());
         plugin.getCommand("knockdc").setTabCompleter(new MainTab());
+        plugin.getCommand("discord").setExecutor(new Discord());
     }
     public static void events() {
         plugin.getServer().getPluginManager().registerEvents(new ChatMessageEvent(), plugin);

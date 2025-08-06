@@ -1,12 +1,15 @@
-name: KnockDC
-description: 'The KnockIT Discord Integration Plugin'
-version: '1.0.0'
+name: ${name}
+version: ${version}
+description: ${description}
+website: ${url}
+authors: [ keishispl ]
 main: io.github.keishispl.knockDC.KnockDC
 api-version: '1.21'
-authors: [ keishispl ]
 load: STARTUP
 commands:
     knockdc:
         description: 'The main command for KnockDC'
         permission: 'knockdc.command'
         permission-message: 'You do not have permission to use this command'
+    discord:
+        description: 'Invite me to your Discord server!'

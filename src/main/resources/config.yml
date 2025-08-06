@@ -13,6 +13,9 @@ update-check: true
 # Your Discord Bot Token here [ DO NOT SHARE WITH ANYONE ] e.g. token: 'your-token-here'
 token:
 
+# Your Discord server invite WITHOUT the 'discord.com/invite/' or 'discord.gg/' e.g. '12345ABCde'
+invite:
+
 # Channels to send chat messages to
 chat:
   enabled: true

@@ -6,10 +6,12 @@
 
     <groupId>io.github.keishispl</groupId>
     <artifactId>KnockDC</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
     <name>KnockDC</name>
+    <description>The KnockIT Discord Integration Plugin</description>
+    <url>http://github.com/KnockIT-MC/KnockDC</url>
 
     <properties>
         <java.version>21</java.version>
