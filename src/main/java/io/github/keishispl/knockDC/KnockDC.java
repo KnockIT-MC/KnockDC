@@ -5,7 +5,6 @@ import io.github.keishispl.knockDC.discord.DiscordMessageEvent;
 import io.github.keishispl.knockDC.utils.CheckConfig;
 import io.github.keishispl.knockDC.utils.LangConfig;
 import io.github.keishispl.knockDC.utils.UpdateChecker;
-import io.github.keishispl.knockDC.utils.getVersion;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;

@@ -2,7 +2,7 @@
 KnockDC is a Discord integration plugin for KnockIT.
 
 ## Installation
-Download the plugin jar from [here](https://github.com/keishispl/knockDC/releases/latest) and place it in your plugins folder.
+Download the plugin jar from [here](https://modrinth.com/plugin/knockdc/versions) and place it in your plugins folder.
 
 ## Configuration
 You can configure KnockDC in the `config.yml` file.
