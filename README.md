@@ -1,6 +1,10 @@
 # KnockDC
 KnockDC is a Discord integration plugin for KnockIT.
 
+## Features
+* Send chat messages from Discord and back
+* Minecraft join and leave messages to Discord
+
 ## Installation
 Download the plugin jar from [here](https://modrinth.com/plugin/knockdc/versions) and place it in your plugins folder.
 
