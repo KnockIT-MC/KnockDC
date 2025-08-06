@@ -41,7 +41,6 @@ public final class KnockDC extends JavaPlugin {
 
         Logger.info(LangConfig.get("plugin.enable"));
         UpdateChecker.updateCheck(Bukkit.getConsoleSender());
-        plugin.getJDA().getPresence().setActivity(Activity.watching(plugin.getServer().getOnlinePlayers().size() + " players"));
     }
 
     public void buildJDA() {
@@ -58,6 +57,7 @@ public final class KnockDC extends JavaPlugin {
         } catch (IllegalArgumentException e) {
 
         }
+        jda.getPresence().setActivity(Activity.watching(plugin.getServer().getOnlinePlayers().size() + " players"));
     }
 
     public JDA getJDA() {
