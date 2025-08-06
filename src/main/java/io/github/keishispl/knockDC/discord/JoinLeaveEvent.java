@@ -65,7 +65,7 @@ public class JoinLeaveEvent implements Listener {
 
     @EventHandler
     public void onLeaveEvent(PlayerQuitEvent event) {
-        plugin.getJDA().getPresence().setActivity(Activity.watching(plugin.getServer().getOnlinePlayers().size() + " players"));
+        plugin.getJDA().getPresence().setActivity(Activity.watching((plugin.getServer().getOnlinePlayers().size() - 1) + " players"));
 
         if (!plugin.getConfig().getBoolean("chat.enabled") || !CheckConfig.check("chat")) return;
         if (!plugin.getConfig().getBoolean("chat.join-leave-messages")) return;
