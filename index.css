@@ -173,6 +173,28 @@ h6 {
      color: inherit;
 }
 
+#links {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+
+     >a {
+          margin: 0 20px;
+          color: inherit;
+     }
+}
+
+a,
+a:visited,
+a:active {
+     color: #a2b7c9;
+     text-decoration: none;
+}
+
+.main-content {
+     padding-bottom: 0;
+}
+
 a.button {
      padding: 10px 20px;
      border-radius: 6px;
@@ -199,28 +221,6 @@ a.button#copy {
      cursor: pointer;
 }
 
-#links {
-     display: flex;
-     flex-direction: row;
-     justify-content: center;
-
-     >a {
-          margin: 0 20px;
-          color: inherit;
-     }
-}
-
-a,
-a:visited,
-a:active {
-     color: #a2b7c9;
-     text-decoration: none;
-}
-
 a:hover {
      color: #7b91a4;
-}
-
-.main-content {
-     padding-bottom: 0;
 }
