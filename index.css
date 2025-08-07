@@ -1,0 +1,226 @@
+body {
+     overscroll-behavior: none;
+     background-size: cover;
+     background-position: center right;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-color: #0D1117;
+     color: #cecfd0;
+     font-weight: normal;
+     margin: 0;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+     overflow-x: hidden;
+     font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Meiryo', 'メイリオ', sans-serif;
+}
+
+.main-content {
+     word-wrap: break-word;
+     text-align: left;
+}
+
+.main-content :first-child {
+     margin-top: 0;
+}
+
+@media screen and (min-width: 64em) {
+     .main-content {
+          max-width: 64rem;
+          padding: 2rem 6rem;
+          margin: 0 auto;
+          font-size: 1.1rem;
+     }
+}
+
+@media screen and (min-width: 42em) and (max-width: 64em) {
+     .main-content {
+          padding: 2rem 4rem;
+          font-size: 1.1rem;
+     }
+}
+
+@media screen and (max-width: 42em) {
+     .main-content {
+          padding: 2rem 1rem;
+          font-size: 1rem;
+     }
+}
+
+.main-content img {
+     max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+     margin-top: 2rem;
+     margin-bottom: 1rem;
+     font-weight: 400;
+}
+
+.main-content p {
+     margin-bottom: 1em;
+}
+
+.main-content code {
+     padding: 2px 4px;
+     font-family: monospace;
+     font-size: 0.9rem;
+     color: #cacaca;
+     background-color: rgb(13, 17, 23);
+     border-radius: 3px;
+     border: 1px solid #cacaca;
+     padding: 1px 5px;
+}
+
+.main-content pre {
+     padding: 2rem 0.8rem;
+     margin-top: 0;
+     margin-bottom: 1rem;
+     word-wrap: normal;
+     border: 1px solid #cacaca;
+     border-radius: 3px;
+}
+
+.main-content pre>code {
+     padding: 0;
+     margin: 0;
+     font-size: 13px;
+     color: #cacaca;
+     word-break: normal;
+     white-space: pre;
+     background: 0 0;
+     border: 0;
+     font-family: Menlo, Monaco, "Courier New", monospace;
+     line-height: 1.5em;
+}
+
+.main-content ul,
+.main-content ol {
+     margin-top: 0;
+}
+
+.main-content blockquote {
+     padding: 0 1rem;
+     margin-left: 0;
+     color: #819198;
+     border-left: 0.3rem solid #dce6f0;
+}
+
+.main-content blockquote> :first-child {
+     margin-top: 0;
+}
+
+.main-content blockquote> :last-child {
+     margin-bottom: 0;
+}
+
+.main-content table {
+     display: block;
+     overflow: auto;
+     word-break: normal;
+     word-break: keep-all;
+     -webkit-overflow-scrolling: touch;
+}
+
+.main-content table th {
+     font-weight: 700;
+}
+
+.main-content table th,
+.main-content table td {
+     padding: 0.5rem 1rem;
+     border: 1px solid #e9ebec;
+}
+
+.main-content dl {
+     padding: 0;
+}
+
+.main-content dl dt {
+     padding: 0;
+     margin-top: 1rem;
+     font-size: 1rem;
+     font-weight: 700;
+}
+
+.main-content dl dd {
+     padding: 0;
+     margin-bottom: 1rem;
+}
+
+.main-content hr {
+     height: 1px;
+     padding: 0;
+     margin: 24px 0;
+     background-color: rgb(48, 54, 61);
+     border: 0;
+}
+
+#versionSelect {
+     width: 200px;
+     font-size: 1rem;
+     padding: 5px 12px;
+     border-radius: 6px;
+     border: 1px solid #30363d;
+     background-color: rgb(13, 17, 23);
+     box-sizing: border-box;
+     margin: auto 0 auto 0;
+     color: inherit;
+}
+
+a.button {
+     padding: 10px 20px;
+     border-radius: 6px;
+     border: 1px solid #30363d;
+     background-color: rgb(13, 17, 23);
+     box-sizing: border-box;
+     color: inherit;
+     text-decoration: none;
+     user-select: none;
+     -moz-user-select: none;
+     -webkit-user-select: none;
+}
+
+p#downloadWrap {
+     line-height: 4em;
+}
+
+p#copyWrap {
+     line-height: 2em;
+     margin: 2em 0;
+}
+
+a.button#copy {
+     cursor: pointer;
+}
+
+#links {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+
+     >a {
+          margin: 0 20px;
+          color: inherit;
+     }
+}
+
+a,
+a:visited,
+a:active {
+     color: #a2b7c9;
+     text-decoration: none;
+}
+
+a:hover {
+     color: #7b91a4;
+}
+
+.main-content {
+     padding-bottom: 0;
+}
