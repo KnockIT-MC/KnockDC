@@ -11,6 +11,9 @@ Download the plugin jar from [Modrinth](https://modrinth.com/plugin/knockdc/vers
 ## Configuration
 You can configure KnockDC in the `config.yml` file.
 
+Download the config template [here](https://knockit-mc.github.io/KnockDC) whenever you update the plugin.
+
+This configuration guide is for version 1.0.0 and above.
 ```yaml
 token: 'your-token-here'
 update-check: true
