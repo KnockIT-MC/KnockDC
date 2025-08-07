@@ -18,7 +18,7 @@ public class Discord implements CommandExecutor {
                     .setHover("&fClick to join!")
                     .setClick("https://discord.com/invite/" + KnockDC.getPlugin().getConfig().getString("invite"))
                     .create();
-            Message.spigot(sender, prefix, message, here);
+            Message.spigot(sender, prefix, message, here, new Component("&f.").create());
             return true;
         }
         return false;
