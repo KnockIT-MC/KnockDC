@@ -6,11 +6,13 @@ import org.bukkit.command.CommandSender;
 
 public class Message {
     public static void send(CommandSender sender, String message) {
-        sender.sendMessage(ChatUtils.translateHexColors(KnockDC.getPlugin().getConfig().getString("prefix")) + " " + ChatUtils.translateHexColors(message));
+        sendClear(sender, ChatUtils.translateHexColors(KnockDC.getPlugin().getConfig().getString("prefix")) + " " + ChatUtils.translateHexColors(message));
     }
+
     public static void sendClear(CommandSender sender, String message) {
         sender.sendMessage(ChatUtils.translateHexColors(message));
     }
+
     public static void spigot(CommandSender player, TextComponent... message) {
         player.spigot().sendMessage(message);
     }

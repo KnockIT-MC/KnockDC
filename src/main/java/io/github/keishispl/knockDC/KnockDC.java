@@ -17,7 +17,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.EnumSet;
@@ -43,36 +42,35 @@ public final class KnockDC extends JavaPlugin {
         UpdateChecker.updateCheck(Bukkit.getConsoleSender());
     }
 
+    @Override
+    public void onDisable() {
+        Logger.info(LangConfig.get("plugin.disable"));
+        getJDA().shutdownNow();
+        getServer().getScheduler().cancelTasks(plugin);
+    }
+
     public void buildJDA() {
         try {
             if (CheckConfig.check("token")) {
                 jda = JDABuilder.create(plugin.getConfig().getString("token"), EnumSet.of(
-                        GatewayIntent.GUILD_MESSAGES,
-                        GatewayIntent.MESSAGE_CONTENT
-                    )).disableCache(CacheFlag.ACTIVITY, CacheFlag.VOICE_STATE, CacheFlag.EMOJI, CacheFlag.STICKER, CacheFlag.CLIENT_STATUS, CacheFlag.ONLINE_STATUS, CacheFlag.SCHEDULED_EVENTS)
+                                GatewayIntent.GUILD_MESSAGES,
+                                GatewayIntent.MESSAGE_CONTENT
+                        )).disableCache(CacheFlag.ACTIVITY, CacheFlag.VOICE_STATE, CacheFlag.EMOJI, CacheFlag.STICKER, CacheFlag.CLIENT_STATUS, CacheFlag.ONLINE_STATUS, CacheFlag.SCHEDULED_EVENTS)
                         .setStatus(OnlineStatus.IDLE)
                         .addEventListeners(new DiscordMessageEvent())
                         .build();
             }
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {}
 
-        }
         jda.getPresence().setActivity(Activity.watching(plugin.getServer().getOnlinePlayers().size() + " players"));
-    }
-
-    public JDA getJDA() {
-        return jda;
-    }
-
-    @Override
-    public void onDisable() {
-        Logger.info(LangConfig.get("plugin.disable"));
-        jda.shutdownNow();
-        getServer().getScheduler().cancelTasks(plugin);
     }
 
     public static KnockDC getPlugin() {
         return plugin;
+    }
+
+    public JDA getJDA() {
+        return jda;
     }
 
     public FileConfiguration getLangConfig() {
@@ -91,14 +89,6 @@ public final class KnockDC extends JavaPlugin {
         }
 
         newLangConfig.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(defConfigStream, Charsets.UTF_8)));
-    }
-
-    public void saveLangConfig() {
-        try {
-            getLangConfig().save(langConfigFile);
-        } catch (IOException ex) {
-            Logger.error("Could not save config to " + langConfigFile);
-        }
     }
 
     public void saveDefaultLangConfig() {

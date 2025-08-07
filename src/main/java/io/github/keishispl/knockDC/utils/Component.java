@@ -16,6 +16,11 @@ public final class Component {
         this.component = new TextComponent(format(text));
     }
 
+    public Component setText(String text) {
+        this.component.setText(format(text));
+        return this;
+    }
+
     @Deprecated
     public Component setHover(String text) {
         this.setHover(HoverEvent.Action.SHOW_TEXT, format(text));
