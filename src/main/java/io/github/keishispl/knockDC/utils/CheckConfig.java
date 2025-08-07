@@ -5,6 +5,8 @@ import io.github.keishispl.knockDC.Logger;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+
 public class CheckConfig {
     private static KnockDC plugin = KnockDC.getPlugin();
 
@@ -16,22 +18,18 @@ public class CheckConfig {
             }
             return;
         }
-        if (!check("chat")) {
-            Logger.info(LangConfig.get("plugin.error.chat"));
-            if (sender instanceof Player) {
-                Message.send(sender, LangConfig.get("plugin.error.chat"));
-            }
-        }
-        if (!check("entry")) {
-            Logger.info(LangConfig.get("plugin.error.entry"));
-            if (sender instanceof Player) {
-                Message.send(sender, LangConfig.get("plugin.error.entry"));
-            }
-        }
-        if (!check("receive")) {
-            Logger.info(LangConfig.get("plugin.error.receive"));
-            if (sender instanceof Player) {
-                Message.send(sender, LangConfig.get("plugin.error.receive"));
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("chat");
+        list.add("entry");
+        list.add("receive");
+
+        for (String type : list) {
+            if (!check(type)) {
+                Logger.info(LangConfig.get("plugin.error." + type));
+                if (sender instanceof Player) {
+                    Message.send(sender, LangConfig.get("plugin.error." + type));
+                }
             }
         }
     }

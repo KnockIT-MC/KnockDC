@@ -43,9 +43,7 @@ public class JoinLeaveEvent implements Listener {
                             .setTimestamp(LocalDateTime.now())
                             .build();
                     channel.sendMessageEmbeds(embed).queue();
-                } catch (Exception e) {
-
-                }
+                } catch (Exception e) {}
             } else {
                 Logger.error("Channel " + channelString + " does not exist.");
             }
