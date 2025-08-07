@@ -3,6 +3,7 @@ package io.github.keishispl.knockDC.discord;
 import io.github.keishispl.knockDC.KnockDC;
 import io.github.keishispl.knockDC.Logger;
 import io.github.keishispl.knockDC.utils.CheckConfig;
+import io.github.keishispl.knockDC.utils.EmbedFooter;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Activity;
@@ -24,17 +25,21 @@ public class JoinLeaveEvent implements Listener {
 
     private void sendMessage(Player player, Color color, String description) {
         jda = plugin.getJDA();
-        List<String> channels = plugin.getConfig().getStringList("chat.channels");
+        List<String> channels = plugin.getConfig().getStringList("entry.channels");
         for (String channelString : channels) {
             TextChannel channel = jda.getTextChannelById(channelString);
             if (channel != null) {
+                String link = "";
+                if (plugin.getConfig().getBoolean("entry.include-photo")) {
+                    link = "https://visage.surgeplay.com/bust/" + player.getUniqueId();
+                }
                 try {
                     MessageEmbed embed = new EmbedBuilder()
                             .setAuthor(player.getName(), null, "https://visage.surgeplay.com/face/" + player.getUniqueId())
                             .setColor(color)
                             .setDescription(description)
-                            .setImage("https://visage.surgeplay.com/bust/" + player.getUniqueId())
-                            .setFooter("From KnockIT in-game.")
+                            .setImage(link)
+                            .setFooter(EmbedFooter.get())
                             .setTimestamp(LocalDateTime.now())
                             .build();
                     channel.sendMessageEmbeds(embed).queue();
@@ -51,14 +56,19 @@ public class JoinLeaveEvent implements Listener {
     public void onJoinEvent(PlayerJoinEvent event) {
         plugin.getJDA().getPresence().setActivity(Activity.watching(plugin.getServer().getOnlinePlayers().size() + " players"));
 
-        if (!plugin.getConfig().getBoolean("chat.enabled") || !CheckConfig.check("chat")) return;
-        if (!plugin.getConfig().getBoolean("chat.join-leave-messages")) return;
+        if (!plugin.getConfig().getBoolean("entry.enabled") || !CheckConfig.check("entry")) return;
+        if (!plugin.getConfig().getBoolean("entry.config.join.enabled") || !CheckConfig.check("entry.config.join")) return;
 
         Color color = new Color(50, 252, 104);
-        String description = event.getPlayer().getName() + " joined the server.";
+        String description = KnockDC.getPlugin().getConfig().getString("entry.config.join.message")
+                .replaceAll("%player%", event.getPlayer().getName());
         if (!event.getPlayer().hasPlayedBefore()) {
-            color = new Color(252, 232, 3);
-            description = event.getPlayer().getName() + " joined the server for the first time. #" + plugin.getServer().getOfflinePlayers().length;
+            if (plugin.getConfig().getBoolean("entry.config.join.new-player.enabled") && CheckConfig.check("entry.config.join.new-player")) {
+                color = new Color(252, 232, 3);
+                description = KnockDC.getPlugin().getConfig().getString("entry.config.join.new-player.message")
+                        .replaceAll("%player%", event.getPlayer().getName())
+                        .replaceAll("%player-count%", "" + plugin.getServer().getOfflinePlayers().length);
+            }
         }
         sendMessage(event.getPlayer(), color, description);
     }
@@ -67,11 +77,12 @@ public class JoinLeaveEvent implements Listener {
     public void onLeaveEvent(PlayerQuitEvent event) {
         plugin.getJDA().getPresence().setActivity(Activity.watching((plugin.getServer().getOnlinePlayers().size() - 1) + " players"));
 
-        if (!plugin.getConfig().getBoolean("chat.enabled") || !CheckConfig.check("chat")) return;
-        if (!plugin.getConfig().getBoolean("chat.join-leave-messages")) return;
+        if (!plugin.getConfig().getBoolean("entry.enabled") || !CheckConfig.check("entry")) return;
+        if (!plugin.getConfig().getBoolean("entry.config.leave.enabled") || !CheckConfig.check("entry.config.leave")) return;
 
         Color color = new Color(252, 3, 3);
-        String description = event.getPlayer().getName() + " left the server.";
+        String description = KnockDC.getPlugin().getConfig().getString("entry.config.leave.message")
+                .replaceAll("%player%", event.getPlayer().getName());
         sendMessage(event.getPlayer(), color, description);
     }
 }

@@ -22,6 +22,12 @@ public class CheckConfig {
                 Message.send(sender, LangConfig.get("plugin.error.chat"));
             }
         }
+        if (!check("entry")) {
+            Logger.info(LangConfig.get("plugin.error.entry"));
+            if (sender instanceof Player) {
+                Message.send(sender, LangConfig.get("plugin.error.entry"));
+            }
+        }
         if (!check("receive")) {
             Logger.info(LangConfig.get("plugin.error.receive"));
             if (sender instanceof Player) {
@@ -33,6 +39,11 @@ public class CheckConfig {
     public static Boolean check(String type) {
         if (type.equalsIgnoreCase("token")) {
             if (plugin.getConfig().getString("token") == null || plugin.getConfig().getString("token").isEmpty()) {
+                return false;
+            }
+            return true;
+        } else if (type.startsWith("entry.config.")) {
+            if (plugin.getConfig().getBoolean(type + ".enabled") && (plugin.getConfig().getString(type + ".message") == null || plugin.getConfig().getString(type + ".message").isEmpty())) {
                 return false;
             }
             return true;

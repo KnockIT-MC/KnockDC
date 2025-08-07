@@ -3,6 +3,7 @@ package io.github.keishispl.knockDC.discord;
 import io.github.keishispl.knockDC.KnockDC;
 import io.github.keishispl.knockDC.Logger;
 import io.github.keishispl.knockDC.utils.CheckConfig;
+import io.github.keishispl.knockDC.utils.EmbedFooter;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.MessageEmbed;
@@ -33,8 +34,11 @@ public class ChatMessageEvent implements Listener {
                     MessageEmbed embed = new EmbedBuilder()
                             .setAuthor(event.getPlayer().getName(), null, "https://visage.surgeplay.com/face/" + event.getPlayer().getUniqueId())
                             .setColor(new Color(73, 120, 214))
-                            .setDescription(" » " + event.getMessage())
-                            .setFooter("From KnockIT in-game.")
+                            .setDescription(KnockDC.getPlugin().getConfig().getString("chat.message")
+                                    .replaceAll("%player%", event.getPlayer().getName())
+                                    .replaceAll("%message%", event.getMessage())
+                            )
+                            .setFooter(EmbedFooter.get())
                             .setTimestamp(LocalDateTime.now())
                             .build();
                     channel.sendMessageEmbeds(embed).queue();

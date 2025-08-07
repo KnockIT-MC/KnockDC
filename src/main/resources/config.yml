@@ -7,9 +7,6 @@
 
 prefix: '&9KnockDC &8●&r'
 
-# Check for plugin updates
-update-check: true
-
 # Your Discord Bot Token here [ DO NOT SHARE WITH ANYONE ] e.g. token: 'your-token-here'
 token:
 
@@ -19,7 +16,29 @@ invite:
 # Channels to send chat messages to
 chat:
   enabled: true
-  join-leave-messages: true
+  # Message Placeholders: %player% for player's name, %message% for the message
+  message: " » %message%"
+  # Add the channel IDs here e.g.
+  # - 0000000000000000000
+  # - 1111111111111111111
+  channels:
+
+entry:
+  enabled: true
+  # If you want to include the player's skin photo in the embed
+  include-photo: true
+  # Message Placeholders: %player% for player's name
+  config:
+    join:
+      enabled: true
+      message: "%player% joined the server."
+      new-player:
+        enabled: true
+        # Message Placeholders: %player-count% for server's unique player count
+        message: "%player% joined the server for the first time. #%player-count%"
+    leave:
+      enabled: true
+      message: "%player% left the server."
   # Add the channel IDs here e.g.
   # - 0000000000000000000
   # - 1111111111111111111
@@ -32,3 +51,6 @@ receive:
   # - 0000000000000000000
   # - 1111111111111111111
   channels:
+
+# The footer of the embeds e.g. "From Minecraft in-game."
+embed-footer:
