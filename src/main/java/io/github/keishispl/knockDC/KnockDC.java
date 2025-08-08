@@ -2,8 +2,7 @@ package io.github.keishispl.knockDC;
 
 import com.google.common.base.Charsets;
 import io.github.keishispl.knockDC.discord.DiscordMessageEvent;
-import io.github.keishispl.knockDC.utils.CheckConfig;
-import io.github.keishispl.knockDC.utils.LangConfig;
+import io.github.keishispl.knockDC.utils.Config;
 import io.github.keishispl.knockDC.utils.UpdateChecker;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -35,24 +34,24 @@ public final class KnockDC extends JavaPlugin {
         Setup.config();
         Setup.commands();
         Setup.events();
-        CheckConfig.withMessage(null);
+        Config.checkWithMessage(null);
         buildJDA();
 
-        Logger.info(LangConfig.get("plugin.enable"));
+        Logger.info(Config.getLang("plugin.enable"));
         UpdateChecker.updateCheck(Bukkit.getConsoleSender());
     }
 
     @Override
     public void onDisable() {
-        Logger.info(LangConfig.get("plugin.disable"));
+        Logger.info(Config.getLang("plugin.disable"));
         getJDA().shutdownNow();
         getServer().getScheduler().cancelTasks(plugin);
     }
 
     public void buildJDA() {
         try {
-            if (CheckConfig.check("token")) {
-                jda = JDABuilder.create(plugin.getConfig().getString("token"), EnumSet.of(
+            if (Config.check("token")) {
+                jda = JDABuilder.create(Config.get().getString("token"), EnumSet.of(
                                 GatewayIntent.GUILD_MESSAGES,
                                 GatewayIntent.MESSAGE_CONTENT
                         )).disableCache(CacheFlag.ACTIVITY, CacheFlag.VOICE_STATE, CacheFlag.EMOJI, CacheFlag.STICKER, CacheFlag.CLIENT_STATUS, CacheFlag.ONLINE_STATUS, CacheFlag.SCHEDULED_EVENTS)

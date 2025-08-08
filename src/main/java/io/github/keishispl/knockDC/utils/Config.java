@@ -3,18 +3,19 @@ package io.github.keishispl.knockDC.utils;
 import io.github.keishispl.knockDC.KnockDC;
 import io.github.keishispl.knockDC.Logger;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 
-public class CheckConfig {
+public class Config {
     private static KnockDC plugin = KnockDC.getPlugin();
 
-    public static void withMessage(CommandSender sender) {
+    public static void checkWithMessage(CommandSender sender) {
         if (!check("token")) {
-            Logger.info(LangConfig.get("plugin.error.token"));
+            Logger.info(getLang("plugin.error.token"));
             if (sender instanceof Player) {
-                Message.send(sender, LangConfig.get("plugin.error.token"));
+                Message.send(sender, getLang("plugin.error.token"));
             }
             return;
         }
@@ -26,9 +27,9 @@ public class CheckConfig {
 
         for (String type : list) {
             if (!check(type)) {
-                Logger.info(LangConfig.get("plugin.error." + type));
+                Logger.info(getLang("plugin.error." + type));
                 if (sender instanceof Player) {
-                    Message.send(sender, LangConfig.get("plugin.error." + type));
+                    Message.send(sender, getLang("plugin.error." + type));
                 }
             }
         }
@@ -51,5 +52,25 @@ public class CheckConfig {
             }
             return true;
         }
+    }
+
+    public static FileConfiguration get() {
+        return plugin.getConfig();
+    }
+
+    public static String getLang(String key) {
+        return plugin.getLangConfig().getString(key);
+    }
+
+    public static String getLang(String key, String[] args) {
+        String message = getLang(key);
+        if (args.length > 0) {
+            for (int i = 0; i < args.length; i++) {
+                while (message.contains("{" + i + "}")) {
+                    message = message.replace("{" + i + "}", args[i]);
+                }
+            }
+        }
+        return message;
     }
 }

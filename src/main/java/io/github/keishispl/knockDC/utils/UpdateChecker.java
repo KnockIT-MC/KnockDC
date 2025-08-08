@@ -17,7 +17,7 @@ public class UpdateChecker implements Listener {
 
             Message.send(p, "&fThere is a new update! &9" + KnockDC.getPlugin().getDescription().getVersion() + "&8 -> &b" + latest_version);
 
-            TextComponent prefix = new Component(KnockDC.getPlugin().getConfig().getString("prefix") + " ").create();
+            TextComponent prefix = new Component(Config.get().getString("prefix") + " ").create();
 
             TextComponent messageModrinth = new Component()
                     .setText("&ahttps://modrinth.com/plugin/knockdc/version/" + latest_version)

@@ -13,10 +13,10 @@ public class Main implements CommandExecutor {
     public static void init(CommandSender sender, String command, String[] args) {
         if (command.equalsIgnoreCase("reload")) {
             KnockDC.getPlugin().reloadConfig();
-            CheckConfig.withMessage(sender);
+            Config.checkWithMessage(sender);
             KnockDC.getPlugin().getJDA().shutdownNow();
             KnockDC.getPlugin().buildJDA();
-            Message.send(sender, LangConfig.get("plugin.reload"));
+            Message.send(sender, Config.getLang("plugin.reload"));
         }
         if (command.equalsIgnoreCase("update")) {
             String v = getVersion.latest();
