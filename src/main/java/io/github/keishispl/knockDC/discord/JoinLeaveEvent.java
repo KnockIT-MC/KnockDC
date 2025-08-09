@@ -32,7 +32,7 @@ public class JoinLeaveEvent implements Listener {
                 }
                 try {
                     MessageEmbed embed = new EmbedBuilder()
-                            .setAuthor(player.getDisplayName(), null, "https://visage.surgeplay.com/face/" + player.getUniqueId())
+                            .setAuthor(player.getName(), null, "https://visage.surgeplay.com/face/" + player.getUniqueId())
                             .setColor(color)
                             .setDescription(description)
                             .setImage(link)
@@ -56,12 +56,14 @@ public class JoinLeaveEvent implements Listener {
 
         Color color = new Color(50, 252, 104);
         String description = Config.get().getString("entry.config.join.message")
-                .replaceAll("%player%", event.getPlayer().getName());
+                .replaceAll("%player%", event.getPlayer().getName())
+                .replaceAll("%player-display%", event.getPlayer().getDisplayName());
         if (!event.getPlayer().hasPlayedBefore()) {
             if (Config.get().getBoolean("entry.config.join.new-player.enabled") && Config.check("entry.config.join.new-player")) {
                 color = new Color(252, 232, 3);
                 description = Config.get().getString("entry.config.join.new-player.message")
                         .replaceAll("%player%", event.getPlayer().getName())
+                        .replaceAll("%player-display%", event.getPlayer().getDisplayName())
                         .replaceAll("%player-count%", "" + Bukkit.getServer().getOfflinePlayers().length);
             }
         }
@@ -77,7 +79,8 @@ public class JoinLeaveEvent implements Listener {
 
         Color color = new Color(252, 3, 3);
         String description = Config.get().getString("entry.config.leave.message")
-                .replaceAll("%player%", event.getPlayer().getName());
+                .replaceAll("%player%", event.getPlayer().getName())
+                .replaceAll("%player-display%", event.getPlayer().getDisplayName());
         sendMessage(event.getPlayer(), color, description);
     }
 }

@@ -13,44 +13,57 @@ token:
 # Your Discord server invite WITHOUT the 'discord.com/invite/' or 'discord.gg/' e.g. '12345ABCde'
 invite:
 
-# Channels to send chat messages to
+# The footer of the embeds e.g. "From Minecraft in-game."
+embed-footer:
+
+# Send chat messages from Minecraft to Discord
 chat:
   enabled: true
-  # Message Placeholders: %player% for player's name, %message% for the message
+
+  # Message Placeholders:
+  # %player% -  Player's username
+  # %message% - The message
   message: " » %message%"
+
   # Add the channel IDs here e.g.
   # - 0000000000000000000
   # - 1111111111111111111
   channels:
 
+
+# Send join and leave messages to Discord
 entry:
   enabled: true
+
   # If you want to include the player's skin photo in the embed
   include-photo: true
-  # Message Placeholders: %player% for player's name
+
+  # Message Placeholders:
+  # %player% - Player's username
+  # %player-display% - Player's display name
+  # %player-count% - Amount of unique players joined so far (new-player only)
   config:
     join:
       enabled: true
       message: "%player% joined the server."
       new-player:
         enabled: true
-        # Message Placeholders: %player-count% for server's unique player count
         message: "%player% joined the server for the first time. #%player-count%"
     leave:
       enabled: true
       message: "%player% left the server."
+
   # Add the channel IDs here e.g.
   # - 0000000000000000000
   # - 1111111111111111111
   channels:
 
-# Channels to receive messages from
+
+# Send chat messages from Discord to Minecraft
 receive:
   enabled: true
+
   # Add the channel IDs here e.g.
   # - 0000000000000000000
   # - 1111111111111111111
   channels:
-
-# The footer of the embeds e.g. "From Minecraft in-game."
-embed-footer:
